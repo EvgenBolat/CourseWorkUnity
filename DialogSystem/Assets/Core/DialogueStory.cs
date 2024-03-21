@@ -38,7 +38,7 @@ namespace Dialogue
             }
             else
             {
-                Debug.Log("Такого тега нет!:" + tag);
+                Debug.Log(name + ": Такого тега нет!:" + tag);
             }
         }
 

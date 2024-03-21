@@ -20,7 +20,7 @@ namespace Dialogue {
             }
             else
             {
-                Debug.Log("не указан DialogueStory");
+                Debug.Log(name + ": не указан DialogueStory");
             }
         }
 
@@ -32,7 +32,7 @@ namespace Dialogue {
             }
             else
             {
-                Debug.Log("невозможно получить компонент TMP_Text");
+                Debug.Log(name + ": невозможно получить компонент TMP_Text");
             }
         }
     }
