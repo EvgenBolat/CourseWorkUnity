@@ -8,12 +8,19 @@ namespace Dialogue {
 	public class DialogueSwitcher : MonoBehaviour
 	{
         [SerializeField] private string[] _disableTags;
-		private DialogueStory _dialogueStory;
 
+        [SerializeField]
+		private DialogueStory _dialogueStory;
         private void Start()
         {
-            _dialogueStory = FindObjectOfType<DialogueStory>(true);
-            _dialogueStory.ChangedStory += Disable;
+            if (_dialogueStory != null)
+            {
+                _dialogueStory.ChangedStory += Disable;
+            }
+            else
+            {
+                Debug.Log(name + ": не добавлен DialogueStory");
+            }
         }
 
         private async void Disable(DialogueStory.Story story)

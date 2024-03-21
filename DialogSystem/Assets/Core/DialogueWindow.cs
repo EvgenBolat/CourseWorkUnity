@@ -7,18 +7,33 @@ namespace Dialogue {
 	public class DialogWindow : MonoBehaviour
 	{
 		private TMP_Text _text;
+        [SerializeField]
 		private DialogueStory _dialogueStory;
 
         private void Awake()
         {
-            _text = GetComponent<TMP_Text>();
-            _dialogueStory = FindObjectOfType<DialogueStory>();
-            _dialogueStory.ChangedStory += ChangeAnswers;
+            TryGetComponent(out _text);
+
+            if (_dialogueStory != null)
+            {
+                _dialogueStory.ChangedStory += ChangeAnswers;
+            }
+            else
+            {
+                Debug.Log("не указан DialogueStory");
+            }
         }
 
         private void ChangeAnswers(DialogueStory.Story story)
         {
-            _text.text = story.Text;
+            if (_text != null)
+            {
+                _text.text = story.Text;
+            }
+            else
+            {
+                Debug.Log("невозможно получить компонент TMP_Text");
+            }
         }
     }
 }

@@ -32,7 +32,14 @@ namespace Dialogue
 
         public void ChangeStory(string tag)
         {
-            ChangedStory?.Invoke(_storyDictionary[tag]);
+            if (_storyDictionary.ContainsKey(tag))
+            {
+                ChangedStory?.Invoke(_storyDictionary[tag]);
+            }
+            else
+            {
+                Debug.Log("Такого тега нет!:" + tag);
+            }
         }
 
         private void Start()
